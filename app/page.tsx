@@ -1,20 +1,37 @@
 import Searchbox from "@/components/searchbox";
 import StartupCard from "@/components/startup-card";
 
-const STARTUP = [
+export interface AuthorTypes {
+  _id: number;
+  name: string;
+  avatar: string;
+}
+
+export interface StartupTypes {
+  _id: number;
+  createdAt: number;
+  viewsCount: number;
+  author: AuthorTypes;
+  title: string;
+  description: string;
+  imgURL: string;
+  category: string;
+}
+
+const STARTUP: StartupTypes[] = [
   {
     _id: 1,
     createdAt: Date.now(),
     viewsCount: 60,
     author: {
-      author_id: 1,
-      author_name: "fogtood",
-      author_img: "/user.png",
+      _id: 1,
+      name: "fogtood",
+      avatar: "/user.png",
     },
     title: "We Robots",
     description:
       "A mobile app that helps users track and reduce their carbo and and test tets test test test",
-    imgUrl:
+    imgURL:
       "https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg",
     category: "Tech",
   },

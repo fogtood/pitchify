@@ -3,16 +3,18 @@ import { Eye } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { StartupTypes } from "@/app/page";
 
-export default function StartupCard({ startup }) {
+export default function StartupCard({ startup }: { startup: StartupTypes }) {
   const {
     createdAt,
     viewsCount,
-    author: { author_img, author_name, author_id },
+    author: { avatar, name, _id: authorId },
     title,
     description,
-    imgUrl,
+    imgURL,
     category,
+    _id,
   } = startup;
 
   return (
@@ -28,22 +30,28 @@ export default function StartupCard({ startup }) {
       </div>
       <div className="my-4 flex items-center justify-between">
         <div className="flex flex-col">
-          <Link href={`/user/${author_id}`} className="flex-1 font-medium">
-            {author_name}
+          <Link href={`/user/${authorId}`} className="flex-1 font-medium">
+            {name}
           </Link>
-          <p className="text-2xl font-bold">{title}</p>
+          <Link href={`/startup/${_id}`}>
+            <p className="text-2xl font-bold">{title}</p>
+          </Link>
         </div>
 
         <div className="relative h-12 w-12">
-          <Image src={author_img} alt="user" fill className="object-cover" />
+          <Link href={`/user/${authorId}`}>
+            <Image src={avatar} alt="user" fill className="object-cover" />
+          </Link>
         </div>
       </div>
-      <p className="line-clamp-2 text-base font-normal text-[#333333]">
-        {description}
-      </p>
+      <Link href={`/startup/${_id}`}>
+        <p className="line-clamp-2 text-base font-normal text-[#333333]">
+          {description}
+        </p>
+      </Link>
       <div className="my-4">
         <Image
-          src={imgUrl}
+          src={imgURL}
           width={300}
           height={300}
           alt="startup-image"
@@ -51,8 +59,12 @@ export default function StartupCard({ startup }) {
         />
       </div>
       <div className="flex items-center justify-between">
-        <p className="font-medium">{category}</p>
-        <Button className="rounded-3xl">Details</Button>
+        <Link href={`/?query=${category}`}>
+          <p className="font-medium">{category}</p>
+        </Link>
+        <Link href={`/startup/${_id}`}>
+          <Button className="rounded-3xl">Details</Button>
+        </Link>
       </div>
     </div>
   );
