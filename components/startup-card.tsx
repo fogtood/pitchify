@@ -59,12 +59,12 @@ export default function StartupCard({ startup }: { startup: StartupTypes }) {
         />
       </div>
       <div className="flex items-center justify-between">
-        <Link href={`/?query=${category}`}>
+        <Link href={`/?query=${category.toLowerCase()}`}>
           <p className="font-medium">{category}</p>
         </Link>
-        <Link href={`/startup/${_id}`}>
-          <Button className="rounded-3xl">Details</Button>
-        </Link>
+        <Button className="rounded-3xl" asChild>
+          <Link href={`/startup/${_id}`}>Details</Link>
+        </Button>
       </div>
     </div>
   );

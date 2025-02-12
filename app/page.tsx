@@ -9,7 +9,7 @@ export interface AuthorTypes {
 
 export interface StartupTypes {
   _id: number;
-  createdAt: number;
+  createdAt: string;
   viewsCount: number;
   author: AuthorTypes;
   title: string;
@@ -21,7 +21,7 @@ export interface StartupTypes {
 const STARTUP: StartupTypes[] = [
   {
     _id: 1,
-    createdAt: Date.now(),
+    createdAt: Date(),
     viewsCount: 60,
     author: {
       _id: 1,
