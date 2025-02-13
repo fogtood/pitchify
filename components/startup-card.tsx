@@ -28,9 +28,9 @@ export default function StartupCard({ startup }: { startup: StartupTypes }) {
           <span className="font-medium">{viewsCount}</span>
         </div>
       </div>
-      <div className="my-4 flex items-center justify-between">
-        <div className="flex flex-col">
-          <Link href={`/user/${authorId}`} className="flex-1 font-medium">
+      <div className="my-5 flex items-center justify-between">
+        <div className="flex flex-col gap-y-2">
+          <Link href={`/user/${authorId}`} className="font-medium">
             {name}
           </Link>
           <Link href={`/startup/${_id}`}>
