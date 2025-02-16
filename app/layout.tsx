@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
 import Navbar from "@/components/navbar";
 import SessionProviderWrapper from "@/components/sessionProviderWrapper";
+import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 import "easymde/dist/easymde.min.css";
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <SessionProviderWrapper>
           <Navbar />
           {children}
+          <SanityLive />
         </SessionProviderWrapper>
       </body>
     </html>

@@ -1,6 +1,6 @@
 import Searchbox from "@/components/searchbox";
 import StartupCard, { StartupTypeCard } from "@/components/startup-card";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home({
@@ -10,7 +10,9 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
 
-  const STARTUPS = await client.fetch(STARTUPS_QUERY);
+  const { data: STARTUPS } = await sanityFetch({
+    query: STARTUPS_QUERY,
+  });
 
   return (
     <>
