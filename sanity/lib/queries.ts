@@ -9,11 +9,31 @@ export const STARTUPS_QUERY = defineQuery(`*[_type=="startup" && defined(slug.cu
     _id,
     name, 
     "avatar": image.asset->url,
-    bio
   },
   "imgUrl": image.asset->url,
   views,
   description,
   category,
+}`)
+
+export const STARTUP_BY_ID_QUERY = defineQuery(`*[_type=="startup" && _id == $id][0] {
+  _id,
+  title, 
+  slug, 
+  _createdAt, 
+  author->{
+    _id,
+    name, 
+    username,
+    "avatar": image.asset->url,
+  },
+  "imgUrl": image.asset->url,
+  views,
+  description, 
+  category, 
   pitch
+}`)
+
+export const STARTUP_VIEWS_QUERY = defineQuery(`*[_type=="startup" && _id == $id][0] {
+  _id, views
 }`)
